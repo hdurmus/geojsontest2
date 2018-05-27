@@ -106,9 +106,9 @@
           styles: mapStyle
         });
 
-/*
+
         // set up the style rules and events for google.maps.Data
-        map.data.setStyle(styleFeature);
+  //     map.data.setStyle(styleFeature);
         map.data.addListener('mouseover', mouseInToRegion);
         map.data.addListener('mouseout', mouseOutOfRegion);
 
@@ -118,7 +118,7 @@
           clearCensusData();
           loadCensusData(selectBox.options[selectBox.selectedIndex].value);
         });
-*/
+
         // state polygons only need to be loaded once, do them now
         loadMapShapes();
 
@@ -129,14 +129,14 @@
         // load US state outline polygons from a GeoJson file
         //map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/states.js', { idPropertyName: 'STATE' });
 		
-		map.data.loadGeoJson('https://raw.githubusercontent.com/hdurmus/geojsontest2/master/worldMapHuseyin.json', { idPropertyName: 'iso-a2' });
+		map.data.loadGeoJson('https://raw.githubusercontent.com/hdurmus/geojsontest2/master/worldMapHuseyin.json', { idPropertyName: 'A3' });
 
         // wait for the request to complete by listening for the first feature to be
         // added
-    /*    google.maps.event.addListenerOnce(map.data, 'addfeature', function() {
+          google.maps.event.addListenerOnce(map.data, 'addfeature', function() {
           google.maps.event.trigger(document.getElementById('census-variable'),
               'change');
-        });*/
+        });
       }
 
       /**
@@ -165,9 +165,9 @@
             }
 
             // update the existing row with the new data
-           /* map.data
+            map.data
               .getFeatureById(stateId)
-              .setProperty('hc-middle-x', censusVariable);*/
+              .setProperty('newVar', censusVariable);
           });
 
           // update and display the legend
