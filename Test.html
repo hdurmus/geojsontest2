@@ -68,6 +68,7 @@
         <option value="https://storage.googleapis.com/mapsdevsite/json/DP05_0001E">Total population</option>
         <option value="https://storage.googleapis.com/mapsdevsite/json/DP02_0016E">Average family size</option>
         <option value="https://storage.googleapis.com/mapsdevsite/json/DP03_0088E">Per-capita income</option>
+	    <option value="https://storage.googleapis.com/mapsdevsite/json/DP03_0088E">Per-capita income</option>
       </select>
       </div>
       <div id="legend">
@@ -105,7 +106,7 @@
           styles: mapStyle
         });
 
-
+/*
         // set up the style rules and events for google.maps.Data
         map.data.setStyle(styleFeature);
         map.data.addListener('mouseover', mouseInToRegion);
@@ -117,7 +118,7 @@
           clearCensusData();
           loadCensusData(selectBox.options[selectBox.selectedIndex].value);
         });
-
+*/
         // state polygons only need to be loaded once, do them now
         loadMapShapes();
 
@@ -126,14 +127,16 @@
       /** Loads the state boundary polygons from a GeoJSON source. */
       function loadMapShapes() {
         // load US state outline polygons from a GeoJson file
-        map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/states.js', { idPropertyName: 'STATE' });
+        //map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/states.js', { idPropertyName: 'STATE' });
+		
+		map.data.loadGeoJson('https://raw.githubusercontent.com/hdurmus/geojsontest2/master/worldMapHuseyin.json', { idPropertyName: 'iso-a2' });
 
         // wait for the request to complete by listening for the first feature to be
         // added
-        google.maps.event.addListenerOnce(map.data, 'addfeature', function() {
+    /*    google.maps.event.addListenerOnce(map.data, 'addfeature', function() {
           google.maps.event.trigger(document.getElementById('census-variable'),
               'change');
-        });
+        });*/
       }
 
       /**
@@ -162,9 +165,9 @@
             }
 
             // update the existing row with the new data
-            map.data
+           /* map.data
               .getFeatureById(stateId)
-              .setProperty('census_variable', censusVariable);
+              .setProperty('hc-middle-x', censusVariable);*/
           });
 
           // update and display the legend
@@ -172,6 +175,7 @@
               censusMin.toLocaleString();
           document.getElementById('census-max').textContent =
               censusMax.toLocaleString();
+		
         };
         xhr.send();
       }
